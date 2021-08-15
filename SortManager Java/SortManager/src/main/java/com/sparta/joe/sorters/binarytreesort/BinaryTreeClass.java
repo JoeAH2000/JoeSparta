@@ -93,12 +93,7 @@ public class BinaryTreeClass implements BinaryTree {
     }
 
     private void addNodeToTree(Node node, int element) {
-        if (element == node.getValue()) {
-            node.setLeftChild(new Node(element));
-            return;
-        }
-
-        if (element < node.getValue()) {
+        if (element < node.getValue() || element == node.getValue()) {
             if (node.isLeftChildEmpty()) {
                 node.setLeftChild(new Node(element));
             } else {
@@ -111,6 +106,7 @@ public class BinaryTreeClass implements BinaryTree {
                 addNodeToTree(node.getRightChild(), element);
             }
         }
+        return;
     }
 
     private void inOrderTraversal(Node currentNode) {

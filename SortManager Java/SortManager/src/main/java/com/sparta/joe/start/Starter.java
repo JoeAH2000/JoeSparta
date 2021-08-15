@@ -8,12 +8,28 @@ import java.util.Scanner;
 
 public class Starter {
     public static void start() {
-        int[] unsortedArray = RandomArray.randomIntArray(10, 1, 50);
+        System.out.println("Welcome to the Sort Manager program!");
 
-        startupText();
+        int sortSelected = 0;
+        int arraySize = 0;
+        int[] unsortedArray = null;
 
-        Scanner scanner = new Scanner(System.in);
-        int sortSelected = scanner.nextInt();
+        while(sortSelected < 1 || sortSelected > 6) {
+            sortSelected = InputHandler.searchSelect();
+
+            if(sortSelected < 1 || sortSelected > 6) {
+                System.out.println("Invalid selection, please try again");
+            }
+        }
+
+        while(arraySize < 1) {
+            arraySize = InputHandler.arraySize();
+
+            if(arraySize < 1) {
+                System.out.println("Invalid selection, please try again");
+            }
+        }
+        unsortedArray = RandomArray.randomIntArray(arraySize, 1, 50);
 
         Sorter sorter = SortFactory.getSorter(sortSelected, unsortedArray);
 
